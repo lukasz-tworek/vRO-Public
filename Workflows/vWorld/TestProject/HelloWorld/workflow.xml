@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:workflow xmlns:ns2="http://vmware.com/vco/workflow" root-name="item2" object-name="workflow:name=generic" id="cd362a33-b3d8-33ac-9934-fd0d4a6ffca5" editor-version="1.6" version="1.0.0" api-version="6.0.0" restartMode="1" resumeFromFailedMode="0">
+    <display-name>HelloWorld</display-name>
+    <description>FirstWorkflow in TypeScript</description>
+    <position y="45.90909090909091" x="105.0"/>
+    <input>
+        <param name="name" type="string"/>
+    </input>
+    <output>
+        <param name="result" type="Any"/>
+    </output>
+    <workflow-item name="item0" type="end" end-mode="0" comparator="0">
+        <in-binding/>
+        <out-binding/>
+        <position y="45.28410311576454" x="464.99609386443717"/>
+    </workflow-item>
+    <workflow-item name="item1" out-name="item0" type="task" comparator="0">
+        <display-name>Hello</display-name>
+        <script encoded="false">System.log('Hello' + name);
+result = "result value";</script>
+        <in-binding>
+            <bind name="name" type="string" export-name="name"/>
+        </in-binding>
+        <out-binding>
+            <bind name="result" type="Any" export-name="result"/>
+        </out-binding>
+        <position y="60.0" x="300.0"/>
+    </workflow-item>
+    <workflow-item name="item2" out-name="item1" type="task" script-module="com.vworld.domain.local/bearerToken" comparator="0">
+        <display-name>bearerToken</display-name>
+        <script encoded="false">//Auto generated script, cannot be modified !
+actionResult = System.getModule("com.vworld.domain.local").bearerToken(vroURL,username,password);
+</script>
+        <in-binding>
+            <bind name="vroURL" type="string" export-name="">
+                <description></description>
+            </bind>
+            <bind name="username" type="string" export-name="">
+                <description></description>
+            </bind>
+            <bind name="password" type="SecureString" export-name="">
+                <description></description>
+            </bind>
+        </in-binding>
+        <out-binding>
+            <bind name="actionResult" type="SecureString" export-name=""/>
+        </out-binding>
+        <description>Add a note to the workflow schema.</description>
+        <position y="60.0" x="200.0"/>
+    </workflow-item>
+</ns2:workflow>
